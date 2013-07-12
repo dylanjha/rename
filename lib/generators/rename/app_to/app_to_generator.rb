@@ -73,7 +73,7 @@ module Rename
       def change_directory_name(basename)
         begin
           print "Renaming directory..."
-          new_dir_name = basename.underscore
+          new_dir_name = basename.underscore.gsub('_', '-')
           new_path = Rails.root.to_s.split('/')[0...-1].push(new_dir_name).join('/')
           File.rename(Rails.root.to_s, new_path)
           puts "Done! Current Directory is now called #{new_dir_name}"
