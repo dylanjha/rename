@@ -73,7 +73,7 @@ module Rename
       def change_directory_name(basename)
         begin
           print "Renaming directory..."
-          new_path = Rails.root.to_s.split('/')[0...-1].push(basename).join('/')
+          new_path = Rails.root.to_s.split('/')[0...-1].push(basename.underscore).join('/')
           File.rename(Rails.root.to_s, new_path)
           puts "Done!"
         rescue Exception => ex
